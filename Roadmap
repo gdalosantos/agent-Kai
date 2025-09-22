@@ -1,24 +1,45 @@
 # Roadmap do Projeto Kai
 
-v0.1 (Atual)
-Entrada texto (Telegram/Signal) e voz (Shortcuts → Whisper)
+Roadmap do Projeto Kai
+v0.1 (MVP)
+Entrada por texto (Telegram/Signal) e voz (Shortcuts iOS)
 
-Classificador GPT para decidir Tarefa vs Lista de compras
+Whisper para transcrição PT/EN/DE
 
-Integração com Todoist (tarefas/subtarefas)
+Classificador GPT: decide tarefa ou lista de compras
 
-Logs básicos e fallback manual
+Criação no Todoist (tarefas/listas)
 
-v0.2 (Próximo passo)
-Criar Eventos no Google Calendar
+Fallback/manual confirmation quando necessário
 
-Resolver contatos e enviar convites (Google Contacts + Calendar)
+v0.2
+Criação de eventos no Google Calendar
 
-Regras de validação (datas, timezone Europe/Berlin)
+Validação detalhada de datas, timezone Europe/Berlin, convidados
 
-Primeiros testes com Whisper para misturar idiomas PT/EN/DE
+Resolução por Google Contacts e envio automático de convites
 
-v0.3+ (Ambicioso)
-Responder e-mails (rascunho automático no Gmail, confirmação humana)
+Logging/auditoria básico
 
-Melhorias de NLU, aprendizado com feedback, relatórios automáticos
+v0.3
+Pipeline de buscas externas via Perplexity (literatura, itens de compra, etc)
+
+Entrega da resposta/processo por e-mail (resumo mastigado ou links)
+
+Parsing/estruturação automática do resultado
+
+v0.4
+Criação automática de rascunho de resposta a e-mails no Gmail
+
+Fluxo de confirmação manual do usuário antes de enviar (confiança alta obrigatória)
+
+Logs, fallback e trilha de auditoria
+
+v1.0 (Visão Final)
+Entrada natural via múltiplos canais (voz/texto)
+
+Reconhecimento multilíngue confiável (PT/EN/DE misturados)
+
+Classificação robusta para todos os tipos: Todoist, Calendar, compras, pesquisas, e-mails
+
+Logs, falha segura, painel de auditoria
