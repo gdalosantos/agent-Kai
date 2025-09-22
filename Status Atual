@@ -1,0 +1,27 @@
+
+## Status Atual
+
+- ✅ Captura de comandos por texto ou voz
+- 🚧 Classificação automática via GPT (em desenvolvimento)
+- 🚧 Integração com Todoist estável para tarefas/listas
+- 🚧 Google Calendar/eventos e e-mail ainda não implementados
+
+## Problemas Conhecidos
+
+- Cenários do Make podem sumir inesperadamente (sempre exportar blueprint JSON para backup)
+- Erros recorrentes: Telegram com 401/400, parsing de mensagem no Make
+- Latência/Timeout de Whisper/GPT em 4G
+- Multilíngue mistura pode dificultar transcrição precisa
+
+## Lista de checagem (reconstrução do zero)
+
+1. Criar bot no Telegram/Signal
+2. Configurar cenário Make para entrada (texto/voz/webhook)
+3. Conectar Todoist no Make
+4. Testar comando por voz (Shortcuts iOS → Whisper)
+5. Implementar fallback manual se o classificador não chegar ao tipo correto
+
+---
+
+## ROADMAP.md
+
