@@ -3,7 +3,7 @@
 
 - ✅ Captura de comandos por texto ou voz
 - 🚧 Classificação automática via GPT (em desenvolvimento)
-- 🚧 Integração com Todoist estável para tarefas/listas
+- 🚧 Integração com Todoist a implementar para tarefas/listas
 - 🚧 Google Calendar/eventos e e-mail ainda não implementados
 
 ## Problemas Conhecidos
