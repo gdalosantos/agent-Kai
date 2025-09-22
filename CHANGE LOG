@@ -1,20 +1,37 @@
-CHANGE LOG
+Changelog do Projeto Kai
 v0.1 – Setembro 2025
-Bot Telegram criado, token obtido
+Pipeline Telegram/Signal/Shortcuts iOS funcionando
 
-Cenário Make para receber comandos via Telegram/Shortcuts iOS
+Comandos recebendo texto/voz, classificação via GPT, saída para Todoist
 
-Integração com Todoist funcional (tarefas/listas)
+Logging inicial implementado
 
-Documentação inicial criada
+Blueprint do Make exportado regularmente
 
-Bloqueios Encontrados
-Erro 401 Unauthorized entre Telegram e Make
+v0.2
+Integração Google Calendar
 
-Erro 400 Bad Request: message text is empty
+Envio de convites após resolução automática de e-mails via Google Contacts
 
-Parsing incorreto de bundle no Make
+Validação timezone/data/convidados implementada
 
-Conexão Whisper não iniciada, pipeline travado na entrada Telegram → Make
+v0.3
+API/perfil Perplexity integrado ao pipeline
 
-MAKE sumiu com tudo o que tinha sido feito. Processo deve ser começado do zero.
+Busca de literatura ou itens de compra entregue estruturada
+
+Resposta enviada por e-mail via Gmail API
+
+v0.4
+Criação automatizada de rascunho de e-mails/respostas
+
+Fluxo robusto de confirmação humana
+
+Logs evoluídos, painel de auditoria beta ativado
+
+v1.0 (Visão)
+Multilinguismo PT/EN/DE ativo
+
+Multicanal funcional (Telegram/Signal)
+
+Classificação robusta, auditoria completa, painel de fallback manual
