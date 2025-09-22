@@ -2,30 +2,53 @@
 
 ## Visão Geral
 
-O **Kai** é um agente pessoal que integra captura de comandos, classificação de intenções e execução automática de tarefas via voz ou texto, com foco multilingue (PT/EN/DE) e baixo custo usando ferramentas no-code/low-code.
+O **Kai** é um agente pessoal capaz de receber comandos via texto ou voz, processá-los automaticamente com classificação inteligente e executar ações práticas: criar tarefas, listas de compras, eventos, enviar convites, realizar buscas externas com resposta mastigada e até responder e-mails com confirmação humana. Fluxo multicanal, multilíngue (PT/EN/DE), seguro e extensível.
 
 ## Objetivos
 
-- Entrada mínima: **texto (Telegram/Signal)** ou **voz (Shortcuts iOS → Whisper)**
-- Decidir entre **Tarefa** ou **Lista de Compras** e adicionar no Todoist
-- Criar **eventos no Google Calendar e enviar convites** (v0.2+)
-- Responder a e-mails com rascunho e confirmação humana (v0.3+)
-- Implementar logs básicos e fallback manual
+- Captura de comandos por texto (Telegram/Signal) ou voz (Shortcuts iOS → Whisper)
+- Decisão inteligente: tarefa, lista de compras, evento, e-mail ou busca externa
+- Execução automática no serviço adequado: Todoist, Google Calendar, Gmail, pesquisa via Perplexity
+- Logs/análise do pipeline e fallback para confirmação manual quando necessário
 
-## Fluxograma MVP (v0.1)
+## Fluxo Geral do Kai (Mermaid)
 
-Cole este diagrama no [Mermaid Live Editor](https://mermaid.live/) para visualizar:
+Cole no [Mermaid Live Editor](https://mermaid.live/) para visualizar:
 
 flowchart TD
-A["Entrada: Texto (Telegram/Signal)"]
-A2["Entrada: Voz (Shortcuts iOS)"]
-B["Whisper: transcrição PT/EN/DE"]
-C{"Classificador GPT"}
-D["Todoist: criar tarefa"]
-E["Todoist: lista de compras (subtarefas)"]
-Z["Fallback: pedir confirmação curta"]
-A --> C
-A2 --> B --> C
-C -->|Tarefa| D
-C -->|Lista de compras| E
-C -->|Baixa confiança| Z
+A["Entrada: Texto (Telegram/Signal)"] --> C{"Classificador GPT"}
+A2["Entrada: Voz (Shortcuts iOS)"] --> B["Whisper: transcrição PT/EN/DE"] --> C
+
+C -->|Tarefa| D["Todoist: criar tarefa"]
+C -->|Lista de compras| E["Todoist: lista de compras (subtarefas)"]
+C -->|Evento| F["Google Calendar: criar evento"]
+F --> G["Convidar contatos via Google Contacts"]
+C -->|Busca| H["Perplexity: busca externa"]
+H --> I["Resumo mastigado/links"]
+I --> J["Gmail: enviar resultado por e-mail"]
+
+C -->|E-mail| K["Gmail: criar rascunho de resposta"]
+K --> L{"Confirmação humana"}
+L -->|Confirma| M["Gmail: enviar e-mail"]
+
+C -->|Baixa confiança| N["Fallback: pedir confirmação curta"]
+
+
+## Funcionalidades
+
+- **MVP (v0.1):** Comandos de voz/texto, classificação, criação de tarefas/listas no Todoist, logs e fallback
+- **v0.2:** Criação de eventos no Calendar, convidados, validação de dados
+- **v0.3:** Busca externa (Perplexity), entregando respostas mastigadas/links, envio por e-mail
+- **v0.4:** Rascunho automático de e-mails/respostas, confirmação obrigatória antes do envio
+- **v1.0:** Robustez, auditoria, multilíngue PT/EN/DE, multicanal Telegram/Signal, painel de analytics
+
+## Recuperação Rápida & Auditoria
+
+- Exportar frequentemente blueprint JSON dos cenários do Make para GitHub
+- Log/auditoria completo de cada request/response
+- Retentativas automáticas em módulos falhando
+- Estrutura clara de projetos/labels no Todoist, eventos e convites padronizados no Calendar
+
+---
+
+
