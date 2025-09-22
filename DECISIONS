@@ -1,18 +1,33 @@
-# Decision & Change Log do Projeto Kai
+Decision Log - Projeto Kai
 
-## Decisões Tomadas
 Decisões Tomadas
-Make escolhido pela flexibilidade e custo sobre Zapier
+Make/Integromat escolhido pela flexibilidade, backups via JSON regular
 
-Telegram como canal inicial (facilidade), Signal planejado para uso real
+Whisper definido para transcrição multilíngue em fluxo de voz
 
-GPT definido como motor de classificação
+Classificação por GPT, configuração prompt para checagem de confiança
 
-Whisper como tecnologia de transcrição multilíngue (essencial para voz)
+Todoist e Google Calendar APIs como padrão
 
-Alternativas Rejeitadas
-Toolkit do Make: não encontrado
+Busca Perplexity agregada no fluxo de comandos (com envio por e-mail)
 
-Siri hands-free: limitação de privacidade/instabilidade
+Confirmação humana obrigatória para e-mails enviados, nunca automático
 
-Atalhos apenas locais no iPhone: insuficiente para automação multicanal
+Bloqueios Enfrentados
+Telegram → Make: erros 400/401, parsing, limites de tokens
+
+Pipeline de voz: dependência de Shortcuts/iOS, latência/timeout em 4G
+
+API Perplexity: definir fallback em caso de bloqueio/limite/excesso de uso
+
+E-mails: garantir nunca enviar sem confirmação
+
+Quedas do Make: solução é backup/export JSON versionado no GitHub
+
+Alternativas testadas/rejeitadas
+Automação pura por Siri/Atalhos: instável fora do ecossistema Apple
+
+Uso somente do Telegram: ponto de falha, por isso multicanal com Signal
+
+Nenhum log: impossível reconstruir cenários sem exportação regular
+
