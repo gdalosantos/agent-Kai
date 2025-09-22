@@ -1,0 +1,37 @@
+# Roadmap do Projeto Kai
+
+## v0.1 (Atual)
+- Criação do bot no Telegram.
+- Configuração de cenário no Make para receber comandos.
+- Integração com Todoist (tarefas simples).
+- Documentação inicial no GitHub.
+
+## v0.2 (Planejado)
+- Substituir Telegram por Signal (uso real pelo marido).
+- Implementar classificação básica de intenções com GPT:
+  - Tarefas → Todoist
+  - Eventos → Google Calendar
+  - Compras → Lista compartilhada
+- Logging básico de interações.
+- **Primeira integração com Whisper para transcrição de voz** (testes em português, inglês e alemão).
+
+## v0.3
+- Suporte multilíngue avançado:
+  - **Whisper configurado para reconhecer frases com idiomas misturados (PT/EN/DE)**.
+  - Roteamento robusto via GPT baseado na transcrição.
+- Integração direta com Google Calendar.
+- Enriquecimento automático de tarefas (ex.: adicionar contexto, datas, tags).
+
+## v0.4
+- Otimizar interface de voz (atalho iOS refinado).
+- Painel de logs e monitoramento no Make.
+- Redução de latência nas chamadas Whisper + GPT.
+- Primeiros testes com neurofeedback de integração (opcional, exploratório).
+
+## v1.0
+- Versão estável, com:
+  - Entrada por voz (via Whisper) ou texto.
+  - Reconhecimento multilíngue confiável (mistura PT/EN/DE).
+  - Classificação automática com GPT.
+  - Multicanal (Signal/Telegram).
+  - Integração Todoist + Calendar consolidada.
