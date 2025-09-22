@@ -1,0 +1,20 @@
+CHANGE LOG
+v0.1 – Setembro 2025
+Bot Telegram criado, token obtido
+
+Cenário Make para receber comandos via Telegram/Shortcuts iOS
+
+Integração com Todoist funcional (tarefas/listas)
+
+Documentação inicial criada
+
+Bloqueios Encontrados
+Erro 401 Unauthorized entre Telegram e Make
+
+Erro 400 Bad Request: message text is empty
+
+Parsing incorreto de bundle no Make
+
+Conexão Whisper não iniciada, pipeline travado na entrada Telegram → Make
+
+MAKE sumiu com tudo o que tinha sido feito. Processo deve ser começado do zero.
