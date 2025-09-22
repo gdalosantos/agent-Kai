@@ -1,21 +1,18 @@
 # Decision & Change Log do Projeto Kai
 
 ## Decisões Tomadas
-- **Make vs Zapier** → escolhido Make pela flexibilidade e custo.
-- **Canal inicial: Telegram** → marido usa Signal, mas Telegram foi usado para desenvolvimento inicial por facilidade.
-- **GPT para classificação** → modelo escolhido para roteamento de intenções.
-- **Whisper para transcrição multilíngue** → definido como tecnologia principal para entrada por voz (PT/EN/DE misturados).
+Decisões Tomadas
+Make escolhido pela flexibilidade e custo sobre Zapier
 
-## Alternativas Testadas e Rejeitadas
-- **Toolkit no Make** → sugerido em tutoriais, mas não encontrado nas versões atuais → descartado.
-- **Siri hands-free** → descartado por limitações de privacidade e instabilidade.
-- **Atalhos apenas locais no iPhone** → insuficiente para multicanal e compartilhamento.
+Telegram como canal inicial (facilidade), Signal planejado para uso real
 
-## Bloqueios Encontrados
-- **Whisper** → não implementado ainda, porque houve bloqueio antes na integração do Telegram com Make (erros 400/401 e parsing de mensagens).
-- **Signal** → integração ainda não realizada, em fila após estabilização do Telegram.
+GPT definido como motor de classificação
 
-## Pontos em Discussão
-- Melhor formato de log (Make interno vs repositório GitHub).
-- Estrutura de autenticação segura para Signal.
-- Como lidar com falas mistas (PT+DE+EN na mesma frase) dentro do pipeline Whisper → GPT.
+Whisper como tecnologia de transcrição multilíngue (essencial para voz)
+
+Alternativas Rejeitadas
+Toolkit do Make: não encontrado
+
+Siri hands-free: limitação de privacidade/instabilidade
+
+Atalhos apenas locais no iPhone: insuficiente para automação multicanal
