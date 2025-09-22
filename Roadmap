@@ -1,37 +1,24 @@
 # Roadmap do Projeto Kai
 
-## v0.1 (Atual)
-- Criação do bot no Telegram.
-- Configuração de cenário no Make para receber comandos.
-- Integração com Todoist (tarefas simples).
-- Documentação inicial no GitHub.
+v0.1 (Atual)
+Entrada texto (Telegram/Signal) e voz (Shortcuts → Whisper)
 
-## v0.2 (Planejado)
-- Substituir Telegram por Signal (uso real pelo marido).
-- Implementar classificação básica de intenções com GPT:
-  - Tarefas → Todoist
-  - Eventos → Google Calendar
-  - Compras → Lista compartilhada
-- Logging básico de interações.
-- **Primeira integração com Whisper para transcrição de voz** (testes em português, inglês e alemão).
+Classificador GPT para decidir Tarefa vs Lista de compras
 
-## v0.3
-- Suporte multilíngue avançado:
-  - **Whisper configurado para reconhecer frases com idiomas misturados (PT/EN/DE)**.
-  - Roteamento robusto via GPT baseado na transcrição.
-- Integração direta com Google Calendar.
-- Enriquecimento automático de tarefas (ex.: adicionar contexto, datas, tags).
+Integração com Todoist (tarefas/subtarefas)
 
-## v0.4
-- Otimizar interface de voz (atalho iOS refinado).
-- Painel de logs e monitoramento no Make.
-- Redução de latência nas chamadas Whisper + GPT.
-- Primeiros testes com neurofeedback de integração (opcional, exploratório).
+Logs básicos e fallback manual
 
-## v1.0
-- Versão estável, com:
-  - Entrada por voz (via Whisper) ou texto.
-  - Reconhecimento multilíngue confiável (mistura PT/EN/DE).
-  - Classificação automática com GPT.
-  - Multicanal (Signal/Telegram).
-  - Integração Todoist + Calendar consolidada.
+v0.2 (Próximo passo)
+Criar Eventos no Google Calendar
+
+Resolver contatos e enviar convites (Google Contacts + Calendar)
+
+Regras de validação (datas, timezone Europe/Berlin)
+
+Primeiros testes com Whisper para misturar idiomas PT/EN/DE
+
+v0.3+ (Ambicioso)
+Responder e-mails (rascunho automático no Gmail, confirmação humana)
+
+Melhorias de NLU, aprendizado com feedback, relatórios automáticos
