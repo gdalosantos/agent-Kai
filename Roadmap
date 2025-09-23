@@ -43,3 +43,22 @@ Reconhecimento multilíngue confiável (PT/EN/DE misturados)
 Classificação robusta para todos os tipos: Todoist, Calendar, compras, pesquisas, e-mails
 
 Logs, falha segura, painel de auditoria
+
+Versão MAKE + COMET
+
+## Roadmap de Futuras Versões
+
+- v0.2: Criação automática de eventos no Google Calendar.
+- v0.3: Busca externa via Perplexity e notificação/entrega multicanal.
+- v0.4: Rascunho de e-mails, respostas e painel de auditoria.
+- v1.0: Multicanal robusto, multilíngue, logs e recuperação avançada.
+
+## Auditoria e Recuperação
+
+- Exportação frequente de blueprint de cenários do Make para o GitHub.
+- Log detalhado de requests e responses, fallback manual em caso de baixa confiança.
+
+## Configuração e Deploy
+
+1. Clone o projeto Kai:  
+
