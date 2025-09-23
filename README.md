@@ -51,4 +51,39 @@ C -->|Baixa confiança| N["Fallback: pedir confirmação curta"]
 
 ---
 
+Versão MAKE + COMET
+
+# Kai – Agente Pessoal Multilingue
+
+## Recursos e Tecnologias
+
+- Make.com (Cenário Modular)
+- OpenAI Whisper (transcrição de voz)
+- OpenAI GPT-4o (classificação de comandos, JSON)
+- Todoist (criação de tarefas automatizadas)
+- Integrável com Telegram, Signal, Google Calendar
+
+## Como funciona (Pipeline):
+
+1. **Áudio enviado via webhook** ➔ Make
+2. **Transcrição automática via Whisper** ➔ texto multilíngue
+3. **Classificação Chat (GPT-4o)** ➔ Output como JSON
+4. **Scheduler Iterator** ➔ Mapeia cada comando/ação como tarefa isolada
+5. **Execução automática via Todoist/API** ➔ Criação efetiva de tarefas
+6. **(Próximos passos)**: Integração com Google Calendar, notificações Telegram, busca por Perplexity, automação de e-mails
+
+## Regras de payload
+
+- Sempre envie arquivos de áudio com extensão e formato aceito pelo Whisper (mp3/m4a/wav).
+- No Chat Completion, limite saída máxima usando `"max_tokens"` para evitar erros de rate limit.
+- Use Iterator para dividir arrays de tarefas em múltiplas chamadas curtas ao criar no Todoist.
+
+## Exemplo de Bloco Mermaid do Fluxo
+
+flowchart TD
+A["Entrada: Áudio/Texto"] --> B["Whisper: transcrição"]
+B --> C["Classificação: ChatCompletion GPT-4o"]
+C -->|Tarefa| D["Todoist: criar tarefa"]
+C -->|Lista de compras| E["Todoist: lista de compras"]
+C -->|Evento| F["Google Calendar (roadmap)"]
 
