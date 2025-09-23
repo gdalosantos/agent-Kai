@@ -1,0 +1,45 @@
+FLUXO ATUAL 
+1. Entrada e Transcrição
+Entrada via Webhook: envia áudio (formato mp3, m4a, wav, etc.) para endpoint Make configurado.
+
+Módulo HTTP 1 (OpenAI Whisper):
+
+Recebe arquivo binário (campo data do webhook), nome do arquivo com extensão (campo name).
+
+Envia para OpenAI Whisper para transcrição.
+
+Retorna texto transcrito (PT/EN/DE misturados).
+
+2. Classificação Inteligente (Chat Completion)
+Módulo HTTP 2 (OpenAI Chat Completion):
+
+Usa o texto transcrito no campo "role": "user" via variável text retornada do Whisper.
+
+Envia contexto e schema JSON restrito para classificar comandos conforme instrução do usuário ("compra pão e ovos, me lembra de...").
+
+Parâmetros:
+
+model: gpt-4o
+
+max_tokens: 200
+
+response_format: json_object ou json_schema
+
+temperature: 0
+
+3. Execução Automática: Tarefas no Todoist
+Módulo Todoist (Make):
+
+Recebe array/tarefa já classificada do Chat Completion.
+
+Cria cada tarefa individualmente usando Iterator (iterador) para evitar payloads grandes (erro 413).
+
+Mapeia apenas o campo relevante do título da tarefa (tasks.title) no campo “content”.
+
+4. Correção de Limites e Payloads
+Limitação de tokens por requisição garantida com parâmetro max_tokens.
+
+Iterator configurado para dividir múltiplas tarefas em chamadas separadas.
+
+Payloads enxutos enviados ao Todoist.
+
