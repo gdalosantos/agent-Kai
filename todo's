@@ -1,0 +1,9 @@
+To Do's
+
+Próximos Passos — v0.4
+========================
+1️⃣ Revisar formatação de datas no Make (tarefas e eventos).
+2️⃣ Adicionar integração com Gmail (enviar e-mails automáticos).
+3️⃣ Criar Data Store para logs e rollback.
+4️⃣ Exportar novo blueprint (Kai v0.4 completo).
+5️⃣ Migrar para Emergent quando datas estiverem estáveis.
