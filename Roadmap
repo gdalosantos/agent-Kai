@@ -1,5 +1,121 @@
 # Roadmap do Projeto Kai
+# Roadmap do Projeto Kai
+Versão: v0.5 (atualizado em 07/11/2025)
 
+--------------------------------------------------
+🌱 Visão Geral
+--------------------------------------------------
+O Kai evolui de um assistente baseado em Make para um sistema integrado no Emergent, 
+com reconhecimento multimodal (voz, texto e imagem). 
+A versão atual (v0.4) foca em estabilidade de fluxos no Make, 
+enquanto a v0.5 inaugura o "Kai App" — interface visual e cognitiva 
+inspirada no Hero (tryhero.app), com leitura de imagens e edição manual antes de envio.
+
+--------------------------------------------------
+🧩 v0.1 (MVP)
+--------------------------------------------------
+• Entrada por texto (Telegram/Signal) e voz (Shortcuts iOS)
+• Transcrição multilíngue via Whisper (PT/EN/DE)
+• Classificador GPT: decide tarefa ou lista de compras
+• Criação automática no Todoist (tarefas/listas)
+• Fallback/manual confirmation quando necessário
+
+--------------------------------------------------
+🗓️ v0.2
+--------------------------------------------------
+• Criação de eventos no Google Calendar
+• Validação detalhada de datas (Europe/Berlin)
+• Convidados e integração com Google Contacts
+• Logging/auditoria básico
+
+--------------------------------------------------
+📡 v0.3
+--------------------------------------------------
+• Pipeline de buscas externas via Perplexity (literatura, itens, insights)
+• Entrega dos resultados por e-mail (resumo ou links)
+• Parsing/estruturação automática do resultado
+
+--------------------------------------------------
+📨 v0.4 (Atual)
+--------------------------------------------------
+• Criação automática de rascunho de resposta no Gmail (em desenvolvimento)
+• Fluxo de confirmação manual (alta confiança obrigatória)
+• Tesouras implementadas para Compras e Tasks
+• Logs e trilha de auditoria planejados
+• Correção de bugs de data pendente (GPT ainda gera due aleatório)
+
+--------------------------------------------------
+🧠 v0.5 — Integração Emergent + OCR (nova fase)
+--------------------------------------------------
+✨ Marco: o Kai ganha corpo no Emergent Studio
+
+### Funcionalidades principais
+• Integração com Emergent: interface unificada e backend modular
+• Entrada multimodal:
+  - Voz → Whisper (transcrição Make)
+  - Texto → Chat GPT (classificação)
+  - Imagem/Fotos → OCR + GPT-4o Vision
+• Reconhecimento de texto em imagem (listas de compras, anotações, quadros, documentos)
+• Edição manual antes da execução (como o Hero App)
+• Logs e rollback integrados (Data Store no Emergent)
+• Visualização de histórico de comandos (voz, texto, imagem)
+• Paleta visual “Grounded Abroad” — tons orgânicos e interface limpa
+
+### Estrutura do app (Emergent)
+1️⃣ `/kai/parse` → processa texto/voz e devolve JSON estruturado  
+2️⃣ `/kai/image-parse` → processa fotos (OCR) e converte em lista editável  
+3️⃣ `/kai/log` → registra input/output no Data Store  
+4️⃣ `/kai/dashboard` → painel visual de histórico e status dos fluxos  
+
+--------------------------------------------------
+🌍 v1.0 — Visão Final
+--------------------------------------------------
+• Entrada natural via múltiplos canais (voz, texto, imagem)
+• Reconhecimento multilíngue confiável (PT/EN/DE misturados)
+• Classificação robusta para todos os tipos (Todoist, Calendar, Gmail, OCR)
+• Logs, falha segura, painel de auditoria
+• Sistema híbrido Make + Emergent + Perplexity
+• Deploy completo e documentação aberta no GitHub
+
+--------------------------------------------------
+🔮 Roadmap de Futuras Versões
+--------------------------------------------------
+• v0.6 — Módulo de contexto (memória curta): lembrar últimas 5 ações.
+• v0.7 — Criação automática de resumos semanais.
+• v0.8 — Voice feedback: resposta falada (TTS).
+• v0.9 — Notificações inteligentes (reagendar, priorizar).
+• v1.0 — Multicanal robusto e autônomo.
+
+--------------------------------------------------
+🧾 Auditoria e Recuperação
+--------------------------------------------------
+• Exportação frequente de blueprints do Make para o GitHub.
+• Log detalhado de requests e responses (Emergent Data Store).
+• Fallback manual em caso de baixa confiança.
+• Rollback planejado: desfazer criação no Todoist/Calendar.
+
+--------------------------------------------------
+⚙️ Configuração e Deploy
+--------------------------------------------------
+1️⃣ Clone o repositório Kai.  
+2️⃣ Importe o blueprint Make atualizado (v0.4).  
+3️⃣ Configure chaves OpenAI, Todoist e Google.  
+4️⃣ Crie endpoints no Emergent (/kai/parse, /kai/image-parse, /kai/log).  
+5️⃣ Teste entrada por voz e imagem.  
+6️⃣ Suba documentação e logs para GitHub (versão v0.5).  
+
+--------------------------------------------------
+📅 Resumo de progresso
+--------------------------------------------------
+| Versão | Tema principal | Status |
+|---------|----------------|--------|
+| v0.4 | Tesouras + estabilidade no Make | ✅ |
+| v0.5 | Emergent + OCR + App visual | ⚙️ em desenvolvimento |
+| v1.0 | Autonomia multimodal e logs avançados | 🚧 planejamento |
+
+
+
+==============================================
 Roadmap do Projeto Kai
 v0.1 (MVP)
 Entrada por texto (Telegram/Signal) e voz (Shortcuts iOS)
