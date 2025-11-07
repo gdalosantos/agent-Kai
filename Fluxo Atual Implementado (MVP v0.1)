@@ -1,4 +1,186 @@
 FLUXO ATUAL 
+
+FLUXO ATUAL — Versão v0.4 (07/11/2025)
+======================================
+
+1️⃣ Entrada e Transcrição (Whisper)
+-----------------------------------
+Entrada via Webhook (Make):
+- Recebe áudio (mp3, m4a, wav etc.) pelo endpoint configurado.
+- Campos:
+  - data → binário do áudio.
+  - name → nome do arquivo com extensão.
+
+Módulo HTTP (OpenAI Whisper):
+- Envia o binário para https://api.openai.com/v1/audio/transcriptions
+- Modelo: whisper-1
+- Retorna texto transcrito multilíngue (PT/EN/DE).
+- Resultado armazenado em {{12.data.text}}.
+
+✨ A transcrição é estável e multilíngue.
+O texto bruto serve de fallback para as tesouras (compras, tasks e events).
+
+
+2️⃣ Classificação Inteligente (GPT – Chat Completion)
+-----------------------------------------------------
+Módulo HTTP (OpenAI Chat Completion):
+- Usa o texto transcrito ({{12.data.text}}) no campo "role": "user".
+- Retorna JSON puro com 3 arrays obrigatórios:
+  {
+    "tasks": [{"title": "...", "due": "..."}],
+    "compras": ["..."],
+    "events": [{"title": "...", "start": "...", "end": "...", "all_day": false, "location": "..."}]
+  }
+
+Parâmetros principais:
+- model: gpt-4o
+- max_tokens: 200
+- temperature: 0
+- response_format: { "type": "json_object" }
+- endpoint: https://api.openai.com/v1/chat/completions
+
+⚠️ json_schema temporariamente suspenso (erro 400 no Make)
+⚙️ Versão atual usa json_object + Parse JSON (21) para validação
+
+Prompt:
+- Sempre retornar tasks, compras e events (mesmo vazios)
+- Separar itens múltiplos ("e", "and", "und", ";")
+- Não inferir datas sem clareza → deixar due vazio
+- Não traduzir palavras misturadas PT/EN/DE
+
+
+3️⃣ Processamento e Tesouras (Make)
+-----------------------------------
+
+Após Parse JSON (21):
+Router (7) distribui para três rotas independentes: Compras, Tasks e Events.
+
+
+🛒 Rota Compras
+---------------
+Router (compras) → Set variable (compras_split) → Iterator → Todoist
+
+Tesoura:
+map(
+  split(
+    replace(
+      replace(
+        replace(
+          replace(
+            if(
+              length(trim(join(21.compras,","))) > 0,
+              join(21.compras,","),
+              {{12.data.text}}
+            ),
+            " e ", ","
+          ),
+          " and ", ","
+        ),
+        " und ", ","
+      ),
+      ";", ","
+    ),
+    ","
+  ),
+  trim(item)
+)
+
+Iterator: Array = compras_split
+Todoist Content = Item/Value
+
+✅ Resultado: cada item da lista vira uma tarefa no projeto “Compras”.
+
+
+🧾 Rota Tarefas
+---------------
+Router (tasks) → Set variable (tasks_array) → Iterator → Todoist
+
+Tesoura:
+if(
+  length(21.tasks) > 0,
+  21.tasks,
+  map(
+    split(
+      replace(
+        replace(
+          replace(
+            replace(
+              {{12.data.text}},
+              " e ", ","
+            ),
+            " and ", ","
+          ),
+          " und ", ","
+        ),
+        ";", ","
+      ),
+      ","
+    ),
+    object("title", trim(item), "due", "")
+  )
+)
+
+Iterator: Array = tasks_array
+Todoist Content = Item.title
+Due = (desativado)
+
+⚠️ Datas (due) ainda são aleatórias (ex.: "13.10.2023").
+Manter campo due vazio até corrigir prompt.
+
+
+📅 Rota Eventos
+---------------
+Router (events) → Set variable (events_split) → Iterator → Filter → Google Calendar
+
+Situação:
+- Tesoura inicial feita, mas datas inválidas causam erro (Invalid date in parameter 'start')
+- Falta formatar com formatDate(parseDate(...)) e criar fallback para start vazio.
+
+
+4️⃣ Execução e Conectores
+-------------------------
+Todoist:
+- Usado nas rotas de compras e tarefas.
+- Iterator evita erro 413 (payload grande).
+- Mapeamento:
+  - Content = Item.title ou Item/Value
+  - Due = vazio
+
+Google Calendar:
+- Rota em desenvolvimento.
+- Próximo passo: corrigir formatação RFC3339.
+
+Gmail:
+- Ainda não conectado.
+- Planejado para rota “Comunicação”.
+
+
+5️⃣ Logs, Rollback e Payloads
+-----------------------------
+- max_tokens: 200 (limita resposta do GPT)
+- Iterator: quebra listas longas em execuções separadas
+- Rollback: planejado (Data Store)
+- Payloads enxutos e idempotentes (evitam duplicação)
+
+
+🧭 Resumo
+---------
+| Etapa            | Status | Observações |
+|------------------|--------|--------------|
+| Whisper → Texto  | ✅ | Estável |
+| GPT → JSON       | ✅ | Funciona, datas imprecisas |
+| Compras          | ✅ | Tesoura estável |
+| Tasks            | ⚙️ | Funciona sem datas |
+| Events           | ⚠️ | Falha em start/datas |
+| Gmail            | 🚧 | Não conectado |
+| Rollback         | 🚧 | Em planejamento |
+
+⚠️ Aviso:
+Manter campo due desativado até corrigir geração de datas no GPT
+e ajustar formatação RFC3339 no Calendar.
+
+
+-----------------------------------------------
 1. Entrada e Transcrição
 Entrada via Webhook: envia áudio (formato mp3, m4a, wav, etc.) para endpoint Make configurado.
 
