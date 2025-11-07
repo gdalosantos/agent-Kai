@@ -1,4 +1,28 @@
 Changelog do Projeto Kai
+
+v0.4 — 07/11/2025
+-------------------
+- Compras 100% estáveis.
+- Tarefas com tesoura funcional (sem datas).
+- Eventos ainda falham por formatação de data.
+- Gmail pendente.
+- Adicionados alertas sobre datas aleatórias (bug GPT).
+
+v0.3 — Novembro 2025
+--------------------
+- Primeira documentação estilo calma-data-beta.
+- Tesoura inicial de Compras.
+- Fallback básico de Tarefas.
+
+v0.2 — Outubro 2025
+--------------------
+- Router e Iterator estruturados.
+- Integração básica Todoist/Calendar.
+
+v0.1 — Setembro 2025
+--------------------
+- Primeira transcrição Whisper → GPT → JSON.
+
 v0.1 – Setembro 2025
 Pipeline Telegram/Signal/Shortcuts iOS funcionando
 
