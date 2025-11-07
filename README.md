@@ -1,5 +1,27 @@
 # Projeto Kai – Agente Pessoal Multilingue
 
+Agent Kai — Versão 0.4 (07/11/2025)
+==========================================
+Resumo rápido
+-------------
+O Kai agora possui fluxos funcionais para Compras e Tarefas (sem datas). 
+Eventos ainda geram erro de data e o Gmail não está conectado.
+Tesouras de Compras e Tarefas implementadas e estáveis.
+
+Componentes principais
+----------------------
+• Entrada: Áudio via iOS Shortcut → Make Webhook → Whisper → GPT-4o → JSON
+• Saída: Todoist (Tarefas e Compras), Google Calendar (Eventos)
+• Idiomas: Português / Inglês / Alemão
+• Versão: 0.4
+
+Funciona:
+✅ Compras — lista separada corretamente
+✅ Tarefas — múltiplas tarefas (sem data)
+⚠️ Eventos — erro de formatação de data
+🚧 Gmail — ainda não implementado
+
+-----------------------------------------------------------------------------------------
 ## Visão Geral
 
 O **Kai** é um agente pessoal capaz de receber comandos via texto ou voz, processá-los automaticamente com classificação inteligente e executar ações práticas: criar tarefas, listas de compras, eventos, enviar convites, realizar buscas externas com resposta mastigada e até responder e-mails com confirmação humana. Fluxo multicanal, multilíngue (PT/EN/DE), seguro e extensível.
