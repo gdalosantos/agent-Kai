@@ -1,5 +1,17 @@
 
 ## Status Atual
+Estado Atual — v0.4 (07/11/2025)
+==================================
+Compras → 100% funcional
+Tarefas → funciona (sem due)
+Eventos → falha em datas
+Gmail → não iniciado
+Tesouras → implementadas (compras/tasks)
+
+Atenção: o GPT ainda inventa datas aleatórias ("13.10.2023").
+Mantenha o campo 'due' desativado até corrigir o prompt.
+
+--------------------------------------------------------------
 
 - ✅ Captura de comandos por texto ou voz
 - 🚧 Classificação automática via GPT (em desenvolvimento)
